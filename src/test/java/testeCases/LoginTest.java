@@ -1,7 +1,10 @@
 package testeCases;
 
 import baseClass.BaseClass;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+
 import pages.LoginPage;
 
 public class LoginTest extends BaseClass {
@@ -11,12 +14,13 @@ public class LoginTest extends BaseClass {
 
     @BeforeMethod
     public void setup(){
-        initializer();
         this.loginPage=new LoginPage(driver);
     }
     @Test
-    public void LoginSuccess(){
+    public void LoginSuccess() throws InterruptedException {
         loginPage.fillUserName("Admin");
         loginPage.fillPassword("admin123");
+        loginPage.clickLogin();
+
     }
 }
